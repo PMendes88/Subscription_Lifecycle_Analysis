@@ -1,0 +1,5 @@
+"tenure_bucket","total_subscriptions","churned_subscriptions","churn_rate_percent"
+"0-30 days","931","931","100.00"
+"31-90 days","957","957","100.00"
+"91-180 days","976","976","100.00"
+"181-365 days","1020","956","93.73"
