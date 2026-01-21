@@ -11,11 +11,6 @@ The analysis follows a full analytics workflow:
 
 Rather than maximizing the number of visuals or metrics, the project emphasizes analytical clarity, validation, and honest interpretation of results, including cases where user behavior does not differ meaningfully across segments.
 
-## Limitations
-- The dataset does not provide reliable calendar-based timestamps, limiting time-series analysis.
-- Engagement metrics are simplified and may not capture qualitative differences in usage.
-- The data represents a simulated environment and may not reflect real-world behavioral complexity.
-
 ## Tools Used
 - SQL (PostgreSQL): data modeling and analysis
 - Excel: KPI validation and exploratory analysis
@@ -51,7 +46,7 @@ Key steps included:
 - Deriving churn and lifecycle indicators
 - Preparing BI-ready views for downstream tools
 
-SQL logic is organized into:
+### SQL logic is organized into:
 - setup.sql: schema creation, raw tables, and core views
 
 Some examples of schema creation, raw dataset ingestion, and view creation:
@@ -133,12 +128,9 @@ GROUP BY tenure_bucket
 ORDER BY MIN(tenure_days);
 ```
 
-
-
 - metrics.sql: analytical queries and metric exploration
 
-Some examples are:
-Revenue distribution by subscription plan:
+Some examples such as revenue distribution by subscription plan:
 ```sql
 SELECT
     s.subscription_type,
@@ -190,7 +182,7 @@ The Excel workbook includes:
 ![Excel KPI Validation](images/excel/excel_kpi.png)
 ![Excel Revenue Validation](images/excel/excel_revenue_validation.png)
 
-All key dashboard metrics were recomputed using formulas and pivot tables to ensure consistency with SQL and Power BI outputs.
+All key dashboard metrics were recomputed using formulas and pivot tables to ensure consistency with SQL and Power BI outputs. This validation step ensured that all reported metrics were reproducible outside of the BI environment.
 
 ## Power BI Dashboard
 The Power BI report is structured as a two-page narrative:
@@ -220,6 +212,11 @@ Key insights are explicitly annotated to avoid overinterpretation of flat or non
 - Engagement does not meaningfully differ between active and churned subscriptions.
 
 Overall, the analysis suggests a structural disconnect between pricing, usage, and retention within the subscription model.
+
+## Limitations
+- The dataset does not provide reliable calendar-based timestamps, limiting time-series analysis.
+- Engagement metrics are simplified and may not capture qualitative differences in usage.
+- The data represents a simulated environment and may not reflect real-world behavioral complexity.
 
 ## Potential Next Steps
 - Incorporate cohort-based retention analysis with reliable time data
